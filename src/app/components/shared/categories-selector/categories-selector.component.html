@@ -1,0 +1,11 @@
+<div class="select">
+  <mat-form-field appearance="fill">
+    <mat-label>Select {{title}}</mat-label>
+    <mat-select (selectionChange)="selectElement($event.value)" [disabled]="isDisabled" panelClass="default-selector">
+      <mat-option value="">Select a {{title}}...</mat-option>
+      <mat-option *ngFor="let item of elements" [value]="item">
+        {{item.title}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
