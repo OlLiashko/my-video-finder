@@ -13,7 +13,6 @@ import {IVideoId} from "../../../interfaces/youtube-api.interface";
 })
 export class FinderPageComponent implements OnInit {
 
-  public videos: any[] = [];
   public orderedParams: IBaseSelectElement[] = [];
   public categories$: Observable<IBaseSelectElement[]>;
   public videoIds$: Observable<IVideoId[]>;
@@ -36,7 +35,6 @@ export class FinderPageComponent implements OnInit {
 
   getVideoList() {
     const params = this.buildQueryParams();
-    console.log(this.buildQueryParams());
     this.videoIds$ = this.youtube.getVideosForChanel(params)
       .pipe(
         filter(Boolean)
@@ -49,7 +47,7 @@ export class FinderPageComponent implements OnInit {
   }
 
   setSortOrder(category: IBaseSelectElement) {
-    this.sortOrder = category.title ? category.title : null;
+    this.sortOrder = category.id ? category.id : null;
     this.getVideoList();
   }
 
@@ -76,7 +74,7 @@ export class FinderPageComponent implements OnInit {
   private getOrderParams(): void {
     for (let item in OrderBy) {
       if (isNaN(Number(item))) {
-        this.orderedParams = [...this.orderedParams, {title: item}];
+        this.orderedParams = [...this.orderedParams, {id: item, title: OrderBy[item]}];
       }
     }
   }

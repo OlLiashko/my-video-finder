@@ -39,7 +39,6 @@ export class YoutubeApiService {
 
   getVideosForChanel({search, category, sortOrder, maxResults = 12}: {search: string, maxResults?: number, category?: string, sortOrder?: string}): Observable<IVideoId[]> {
     // bottom will be adaptation for youtube api requirements
-    debugger
     const q = search,
           videoCategoryId = category ? category : '',
           order = sortOrder ? sortOrder : '',

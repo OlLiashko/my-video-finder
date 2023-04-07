@@ -3,7 +3,7 @@
   <div class="control-panel flex">
     <div class="gap sm flex align-items-center">
       <app-search-input (onInput)="getSearchParam($event)"></app-search-input>
-      <button (click)="getVideoList()" [disabled]="!searchParams && !videos.length" class="default-button">Show results</button>
+      <button (click)="getVideoList()" [disabled]="!searchParams" class="default-button">Show results</button>
     </div>
   </div>
   <div class="control-panel flex justify-content-center align-items-center">
@@ -27,11 +27,16 @@
       </ng-container>
     </div>
   </div>
-  <div *ngIf="(videoIds$ | async) as videos else emptyMessage" class="grid-wrap">
-    <div *ngFor="let video of videos" class="item">
-      <iframe width="426" height="240" [src]="video.videoId | safe" allowfullscreen></iframe>
+  <ng-container *ngIf="(videoIds$ | async) as videos else emptyMessage">
+    <div *ngIf="videos.length; else notFound" class="grid-wrap">
+      <div *ngFor="let video of videos" class="item">
+        <iframe [src]="video.videoId | safe" allowfullscreen></iframe>
+      </div>
     </div>
-  </div>
+    <ng-template #notFound>
+      <div class="empty">No videos were found for this request!</div>
+    </ng-template>
+  </ng-container>
   <ng-template #emptyMessage>
     <div class="empty">There is no videos yet!</div>
   </ng-template>

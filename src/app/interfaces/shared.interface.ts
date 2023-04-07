@@ -3,10 +3,10 @@ export interface IBaseSelectElement {
   id?: string;
 }
 export enum OrderBy {
-  date,
-  rating,
-  relevance,
-  title,
-  videoCount,
-  viewCount
+  date = 'Date',
+  rating = 'Rating',
+  relevance = 'Relevance(by default)',
+  title = 'Title',
+  videoCount = 'Video count',
+  viewCount = 'View count'
 }
