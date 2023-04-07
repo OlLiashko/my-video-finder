@@ -11,10 +11,10 @@ import {IVideoId} from "../../../interfaces/youtube-api.interface";
 })
 export class FinderPageComponent implements OnInit {
 
-  public orderedParams: IBaseSelectElement[] = [];
-  public categories$: Observable<IBaseSelectElement[]>;
-  public videoIds$: Observable<IVideoId[]>;
-  public searchParams: string;
+  orderedParams: IBaseSelectElement[] = [];
+  categories$: Observable<IBaseSelectElement[]>;
+  videoIds$: Observable<IVideoId[]>;
+  searchParams: string;
 
   private sortOrder: string | null;
   private category: string | null;
