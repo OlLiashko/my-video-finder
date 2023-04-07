@@ -2,10 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {YoutubeApiService} from "../../../services/youtube-api.service";
 import {filter, Observable} from "rxjs";
 import {IBaseSelectElement, OrderBy} from "../../../interfaces/shared.interface";
-import {UntilDestroy} from "@ngneat/until-destroy";
 import {IVideoId} from "../../../interfaces/youtube-api.interface";
 
-@UntilDestroy()
 @Component({
   selector: 'app-finder-page',
   templateUrl: './finder-page.component.html',
